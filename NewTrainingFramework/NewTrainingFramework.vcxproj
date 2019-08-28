@@ -121,10 +121,6 @@
     <None Include="..\Readme.doc" />
     <None Include="..\Resources\Shaders\TextureShaderFS.fs" />
     <None Include="..\Resources\Shaders\TextureShaderVS.vs" />
-    <None Include="..\Resources\Shaders\TriangleShaderFS.fs" />
-    <None Include="..\Resources\Shaders\TriangleShaderVS.vs" />
-    <None Include="LightShaderFS.fs" />
-    <None Include="LightShaderVS.vs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Utilities\Utilities.vcxproj">
