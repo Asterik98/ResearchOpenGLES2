@@ -86,5 +86,8 @@
     <None Include="..\Resources\Shaders\TextureShaderVS.vs">
       <Filter>Resources\Shaders</Filter>
     </None>
+    <None Include="LightShaderFS.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
