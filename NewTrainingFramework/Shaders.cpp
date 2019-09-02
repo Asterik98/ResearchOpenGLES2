@@ -23,7 +23,6 @@ int Shaders::Init( char * fileVertexShader, char * fileFragmentShader )
 	m_attributes.position = glGetAttribLocation( m_program, "a_posL" );
 	m_attributes.color = glGetAttribLocation(m_program, "a_VColor");
 	m_attributes.uv = glGetAttribLocation(m_program, "a_uv");
-	m_attributes.norm = glGetAttribLocation(m_program, "a_Normal");
 
 	//m_uniforms.NewPos=glGetUniformLocation(m_program,"u_pos");
 	//m_uniforms.NewScale = glGetUniformLocation(m_program, "u_sca");

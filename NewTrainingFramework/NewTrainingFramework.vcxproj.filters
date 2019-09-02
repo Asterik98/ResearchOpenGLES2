@@ -80,10 +80,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.doc" />
+    <None Include="..\Resources\Shaders\LightShaderFS.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\LightShaderVS.vs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
     <None Include="..\Resources\Shaders\TextureShaderFS.fs">
       <Filter>Resources\Shaders</Filter>
     </None>
+    <None Include="..\Resources\Shaders\TextureShaderFS3.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
     <None Include="..\Resources\Shaders\TextureShaderVS.vs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\TextureShaderVS3.vs">
       <Filter>Resources\Shaders</Filter>
     </None>
   </ItemGroup>

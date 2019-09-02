@@ -9,7 +9,6 @@ public:
 		GLint position;
 		GLint color;
 		GLint uv;
-		GLint norm;
 	};
 
 	struct Uniforms
