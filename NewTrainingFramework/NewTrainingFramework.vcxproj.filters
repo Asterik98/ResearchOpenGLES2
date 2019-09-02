@@ -79,23 +79,23 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Resources\Shaders\TriangleShaderFS.fs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="..\Resources\Shaders\TriangleShaderVS.vs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
     <None Include="..\Readme.doc" />
+    <None Include="..\Resources\Shaders\LightShaderFS.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\LightShaderVS.vs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
     <None Include="..\Resources\Shaders\TextureShaderFS.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\TextureShaderFS3.fs">
       <Filter>Resources\Shaders</Filter>
     </None>
     <None Include="..\Resources\Shaders\TextureShaderVS.vs">
       <Filter>Resources\Shaders</Filter>
     </None>
-    <None Include="LightShaderFS.fs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="LightShaderVS.vs">
+    <None Include="..\Resources\Shaders\TextureShaderVS3.vs">
       <Filter>Resources\Shaders</Filter>
     </None>
   </ItemGroup>
