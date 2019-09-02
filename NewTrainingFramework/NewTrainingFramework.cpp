@@ -47,7 +47,6 @@ int Init( ESContext *esContext )
 	myCamera = new Camera(0.1, 10,2);
 	myObj = new Object3D(myModel, myShaders, myTexture);
 	myObj2 = new Object3D(myModel2, myShaders, myTexture2);
-
 	myRender = new Renderer;
 	myCamera->SetPos(0.0, 0.3, 0.9);
 	myCamera->SetRot(-0.4, 0.0, 0.0);
