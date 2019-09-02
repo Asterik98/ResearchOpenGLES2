@@ -14,26 +14,15 @@
 #include <conio.h>
 
 Shaders*myShaders=new Shaders;
-Shaders*myShadersLight=new Shaders;
+Shaders*myShaders2=new Shaders;
 Model* myModel=new Model;
 Model* myModel2 = new Model;
-Model* myModel3 = new Model;
-Model* myModel4 = new Model;
-Model* myModel5 = new Model;
 Texture* myTexture=new Texture;
 Texture* myTexture2 = new Texture;
-Texture* myTexture3 = new Texture;
-Texture* myTexture4 = new Texture;
-Texture* myTexture5 = new Texture;
-Texture* myTexture6 = new Texture;
+
 
 Object3D* myObj;
 Object3D* myObj2;
-Object3D* myObj3;
-Object3D* myObj4;
-Object3D* myObj5;
-Object3D* myObj6;
-
 Renderer * myRender;
 Camera* myCamera;
 float degree=0.0f;
@@ -47,24 +36,18 @@ int Init( ESContext *esContext )
 	glClearColor(0.3f, 0.5f, 0.3f, 0.0f );
 
 	myModel->InitModel("../Resources/Models/Woman1.nfg");
-	//myModel2->InitModel("../Resources/Models/Woman2.nfg");
-	//myModel3->InitModel("../Resources/Models/Witch.nfg");
-	//myModel4->InitModel("../Resources/Models/Croco.nfg");
-	//myModel5->InitModel("../Resources/Models/SkyBox.nfg");
+	myModel2->InitModel("../Resources/Models/Woman2.nfg");
+
 	myShaders->Init("../Resources/Shaders/TextureShaderVS.vs", "../Resources/Shaders/TextureShaderFS.fs");
-	//myShadersLight->Init("../Resources/Shaders/TextureShaderVS.vs", "../Resources/Shaders/LightShaderFS.fs");
+	myShaders2->Init("../Resources/Shaders/TextureShaderVS.vs", "../Resources/Shaders/LightShaderFS.fs");
 
 	myTexture->InitTexture("../Resources/Textures/Woman1.tga");
-	//myTexture2->InitTexture("../Resources/Textures/Woman2.tga");
-	//myTexture3->InitTexture("../Resources/Textures/Witch.tga");
-	//myTexture4->InitTexture("../Resources/Textures/Croco.tga");
-	//myTexture5->InitTexture("../Resources/Textures/Skybox_Back.tga");
+	myTexture2->InitTexture("../Resources/Textures/Woman2.tga");
+
 	myCamera = new Camera(0.1, 10,2);
 	myObj = new Object3D(myModel, myShaders, myTexture);
-	//myObj2 = new Object3D(myModel2, myShaders, myTexture2);
-	//myObj3 = new Object3D(myModel3, myShaders, myTexture3);
-	//myObj4 = new Object3D(myModel4, myShaders, myTexture4);
-	//myObj5 = new Object3D(myModel5, myShaders, myTexture5);
+	myObj2 = new Object3D(myModel2, myShaders, myTexture2);
+
 	myRender = new Renderer;
 	myCamera->SetPos(0.0, 0.3, 0.9);
 	myCamera->SetRot(-0.4, 0.0, 0.0);
@@ -86,31 +69,12 @@ void Draw( ESContext *esContext )
 	degree+=0.01;
 	myRender->DoDraw();
 
-	//myRender->Render(myObj2, myCamera);
-	//myObj2->SetPos(0.5, -0.5, 0.0);
-	//myObj2->SetSca(0.5, 0.5, 0.5);
-	//myObj2->SetRot(0.0, degree2, 0.0);
-	//degree2 -= 0.01;
-	//myRender->DoDraw();
-
-	//myRender->Render(myObj3, myCamera);
-	//myObj3->SetPos(0.0, 1.0, -0.8);
-	//myObj3->SetSca(0.001, 0.001, 0.001);
-	//myObj3->SetRot(0.0, degree3, 0.0);
-	//degree3 -= 0.01;
-	//myRender->DoDraw();
-
-	//myRender->Render(myObj4, myCamera);
-	//myObj4->SetPos(0.0, 0, -2);
-	//myObj4->SetSca(0.01, 0.01, 0.01);
-	//myObj4->SetRot(0.0, 2, 0.0);
-	//myRender->DoDraw();
-	//
-	//myRender->Render(myObj5, myCamera);
-	//myObj5->SetPos(0.0, 5, -2);
-	//myObj5->SetSca(0.1, 0.1, 0.1);
-	//myObj5->SetRot(0.0, 2, 0.0);
-	//myRender->DoDraw();
+	myRender->Render(myObj2, myCamera);
+	myObj2->SetPos(0.5, -0.5, 0.0);
+	myObj2->SetSca(0.5, 0.5, 0.5);
+	myObj2->SetRot(0.0, degree2, 0.0);
+	degree2 -= 0.01;
+	myRender->DoDraw();
 
 
 	eglSwapBuffers( esContext->eglDisplay, esContext->eglSurface );
@@ -182,8 +146,7 @@ void CleanUp()
 	delete myCamera;
 	delete myObj;
 	delete myObj2;
-	delete myObj3;
-	delete myObj4;
+
 	delete myRender;
 }
 
