@@ -79,6 +79,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Resources\Shaders\TriangleShaderFS.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\TriangleShaderVS.vs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
     <None Include="..\Readme.doc" />
     <None Include="..\Resources\Shaders\TextureShaderFS.fs">
       <Filter>Resources\Shaders</Filter>
@@ -87,6 +93,9 @@
       <Filter>Resources\Shaders</Filter>
     </None>
     <None Include="LightShaderFS.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="LightShaderVS.vs">
       <Filter>Resources\Shaders</Filter>
     </None>
   </ItemGroup>

@@ -1,6 +1,6 @@
-out vec4 color;
-
-void main()
-{
-    color = vec4(1.0f); // Set alle 4 vector values to 1.0f
-}
+precision mediump float;
+uniform sampler2D u_texture;  
+varying vec2 v_uv; 
+void main() {      
+	gl_FragColor = texture2D(u_texture, v_uv); 
+} 
