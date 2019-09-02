@@ -23,6 +23,7 @@ Texture* myTexture2 = new Texture;
 
 Object3D* myObj;
 Object3D* myObj2;
+
 Renderer * myRender;
 Camera* myCamera;
 float degree=0.0f;
@@ -43,7 +44,6 @@ int Init( ESContext *esContext )
 
 	myTexture->InitTexture("../Resources/Textures/Woman1.tga");
 	myTexture2->InitTexture("../Resources/Textures/Woman2.tga");
-
 	myCamera = new Camera(0.1, 10,2);
 	myObj = new Object3D(myModel, myShaders, myTexture);
 	myObj2 = new Object3D(myModel2, myShaders, myTexture2);
@@ -75,6 +75,8 @@ void Draw( ESContext *esContext )
 	myObj2->SetRot(0.0, degree2, 0.0);
 	degree2 -= 0.01;
 	myRender->DoDraw();
+
+
 
 
 	eglSwapBuffers( esContext->eglDisplay, esContext->eglSurface );
@@ -146,7 +148,6 @@ void CleanUp()
 	delete myCamera;
 	delete myObj;
 	delete myObj2;
-
 	delete myRender;
 }
 
