@@ -23,7 +23,8 @@ void Model::InitModel(char* filename) {
 	fscanf_s(pFile, "NrVertices: %d", &TotalVertices);
 	verticesData = new Vertex[TotalVertices];
 	while (fscanf_s(pFile, "%c", &c) != EOF) {
-		if (fscanf_s(pFile, "pos:[%f, %f, %f]; norm:[%*f, %*f, %*f]; binorm:[%*f, %*f, %*f]; tgt:[%*f, %*f, %*f]; uv:[%f, %f];", &verticesData[CounterVertices].pos.x, &verticesData[CounterVertices].pos.y, &verticesData[CounterVertices].pos.z, &verticesData[CounterVertices].uv.x, &verticesData[CounterVertices].uv.y) > 0) {
+		if (fscanf_s(pFile, "pos:[%f, %f, %f]; uv:[%f, %f];", &verticesData[CounterVertices].pos.x, &verticesData[CounterVertices].pos.y, &verticesData[CounterVertices].pos.z,
+			&verticesData[CounterVertices].uv.x, &verticesData[CounterVertices].uv.y) > 0) {
 			if (CounterVertices + 1 == TotalVertices) {
 				break;
 			}

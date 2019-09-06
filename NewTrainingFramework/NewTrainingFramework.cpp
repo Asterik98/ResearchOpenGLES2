@@ -16,10 +16,8 @@
 Shaders*myShaders=new Shaders;
 Shaders*myShaders2=new Shaders;
 Model* myModel=new Model;
-Model* myModel2 = new Model;
+Model* myModel2=new Model;
 Texture* myTexture=new Texture;
-Texture* myTexture2 = new Texture;
-
 
 Object3D* myObj;
 Object3D* myObj2;
@@ -36,17 +34,14 @@ int Init( ESContext *esContext )
 {
 	glClearColor(0.3f, 0.5f, 0.3f, 0.0f );
 
-	myModel->InitModel("../Resources/Models/Woman1.nfg");
-	myModel2->InitModel("../Resources/Models/Woman2.nfg");
+	myModel->InitModel("../Resources/Models/Cube.nfg");
 
-	myShaders->Init("../Resources/Shaders/TextureShaderVS.vs", "../Resources/Shaders/TextureShaderFS.fs");
-	myShaders2->Init("../Resources/Shaders/TextureShaderVS.vs", "../Resources/Shaders/LightShaderFS.fs");
-
-	myTexture->InitTexture("../Resources/Textures/Woman1.tga");
-	myTexture2->InitTexture("../Resources/Textures/Woman2.tga");
+	myShaders->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/ColorShaderFS.fs");
+	myModel2->InitModel("../Resources/Models/Cube.nfg");
+	myShaders2->Init("../Resources/Shaders/LampShaderVS.vs", "../Resources/Shaders/LampShaderFS.fs");
 	myCamera = new Camera(0.1, 10,2);
-	myObj = new Object3D(myModel, myShaders, myTexture);
-	myObj2 = new Object3D(myModel2, myShaders, myTexture2);
+	myObj = new Object3D(myModel, myShaders);
+	myObj2 = new Object3D(myModel2, myShaders2);
 	myRender = new Renderer;
 	myCamera->SetPos(0.0, 0.3, 0.9);
 	myCamera->SetRot(-0.4, 0.0, 0.0);
@@ -60,7 +55,6 @@ void Draw( ESContext *esContext )
 	glEnable(GL_DEPTH_TEST);
 	glUseProgram(myShaders->GetProgram());
 
-
 	myRender->Render(myObj,myCamera);
 	myObj->SetPos(-0.5, -0.5, 0.0);
 	myObj->SetSca(0.5, 0.5, 0.5);
@@ -68,11 +62,12 @@ void Draw( ESContext *esContext )
 	degree+=0.01;
 	myRender->DoDraw();
 
-	myRender->Render(myObj2, myCamera);
-	myObj2->SetPos(0.5, -0.5, 0.0);
-	myObj2->SetSca(0.5, 0.5, 0.5);
-	myObj2->SetRot(0.0, degree2, 0.0);
-	degree2 -= 0.01;
+	glUseProgram(myShaders2->GetProgram());
+	myRender->Render(myObj, myCamera);
+	myObj->SetPos(0.5, 0.5, 0.0);
+	myObj->SetSca(0.1, 0.1, 0.1);
+	myObj->SetRot(0.0, degree, 0.0);
+	degree += 0.01;
 	myRender->DoDraw();
 
 

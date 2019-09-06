@@ -16,7 +16,6 @@ void Renderer::Render(Object3D * myObject, Camera * myCamera)
 	CameraRender = myCamera;
 	R_Shaders= ObjectRender->m_Shader;
 	R_Model= ObjectRender->m_Model;
-	R_Texture= ObjectRender->m_Texture;
 
 }
 
@@ -36,8 +35,6 @@ void Renderer::UseIBO() {
 }
 void Renderer::GetTextureId() {
 	Matrix wvp;
-	glBindTexture(GL_TEXTURE_2D, R_Texture->textureID);
-	glUniform1i(R_Shaders->GetUniforms().iTextureLoc,0);
 	
 	//glUniformMatrix4fv(R_Shaders->GetUniforms().worldMatrix, 1, GL_FALSE, *ObjectRender->m_Ptransform->GetWorldMatrix().m);
 	wvp = (ObjectRender->m_Ptransform->GetWorldMatrix()) * CameraRender->GetViewMatrix() * CameraRender->GetProjectionMatrix();
