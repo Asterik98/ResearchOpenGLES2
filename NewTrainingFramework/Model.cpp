@@ -43,7 +43,7 @@ void Model::InitModel(char* filename) {
 	indices = new unsigned int[TotalIndices];
 
 	while (fscanf_s(pFile, "%c", &c) != EOF) {
-			if (fscanf_s(pFile, "   %*d.    %d,    %d,    %d", &indices[m_indicesCount], &indices[m_indicesCount + 1], &indices[m_indicesCount + 2]) > 0) {
+			if (fscanf_s(pFile, "   %*d.    %d,    %d,    %d ;", &indices[m_indicesCount], &indices[m_indicesCount + 1], &indices[m_indicesCount + 2]) > 0) {
 				if (m_indicesCount + 2 == TotalIndices) {
 					break;
 				}

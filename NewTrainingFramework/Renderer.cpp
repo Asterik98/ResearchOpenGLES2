@@ -16,7 +16,6 @@ void Renderer::Render(Object3D * myObject, Camera * myCamera)
 	CameraRender = myCamera;
 	R_Shaders= ObjectRender->m_Shader;
 	R_Model= ObjectRender->m_Model;
-
 }
 
 void Renderer::UseVBO() {
@@ -35,12 +34,17 @@ void Renderer::UseIBO() {
 }
 void Renderer::GetTextureId() {
 	Matrix wvp;
-	
 	//glUniformMatrix4fv(R_Shaders->GetUniforms().worldMatrix, 1, GL_FALSE, *ObjectRender->m_Ptransform->GetWorldMatrix().m);
 	wvp = (ObjectRender->m_Ptransform->GetWorldMatrix()) * CameraRender->GetViewMatrix() * CameraRender->GetProjectionMatrix();
 	glUniformMatrix4fv(R_Shaders->GetUniforms().worldMatrix, 1, GL_FALSE, *wvp.m);
-}
 
+}
+void Renderer::SetLightColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a) {
+	glUniform4f(R_Shaders->GetUniforms().lightColor, r, g, b, a);
+}
+void Renderer::SetObjectColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a) {
+	glUniform4f(R_Shaders->GetUniforms().objectColor, r, g, b, a);
+}
 void Renderer::DoDraw() {
 	UseVBO();
 	GetTextureId();

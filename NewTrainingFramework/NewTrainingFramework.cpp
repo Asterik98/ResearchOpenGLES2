@@ -35,7 +35,6 @@ int Init( ESContext *esContext )
 	glClearColor(0.3f, 0.5f, 0.3f, 0.0f );
 
 	myModel->InitModel("../Resources/Models/Cube.nfg");
-
 	myShaders->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/ColorShaderFS.fs");
 	myModel2->InitModel("../Resources/Models/Cube.nfg");
 	myShaders2->Init("../Resources/Shaders/LampShaderVS.vs", "../Resources/Shaders/LampShaderFS.fs");
@@ -60,6 +59,8 @@ void Draw( ESContext *esContext )
 	myObj->SetSca(0.5, 0.5, 0.5);
 	myObj->SetRot(0.0, degree, 0.0);
 	degree+=0.01;
+	myRender->SetLightColor(1.0, 1.0, 1.0, 1.0);
+	myRender->SetObjectColor(1.0, 0.5, 0.31, 1.0);
 	myRender->DoDraw();
 
 	glUseProgram(myShaders2->GetProgram());

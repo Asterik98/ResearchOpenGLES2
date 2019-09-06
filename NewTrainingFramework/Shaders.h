@@ -17,6 +17,8 @@ public:
 		GLint NewScale;
 		GLint iTextureLoc;
 		GLint worldMatrix;
+		GLint lightColor;
+		GLint objectColor;
 	};
 
 private:
