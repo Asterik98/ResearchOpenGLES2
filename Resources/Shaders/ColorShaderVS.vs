@@ -9,5 +9,5 @@ uniform vec3 objectColor;
 void main() {            
 	FragPos = vec3(u_model*vec4(a_posL,1.0));
 	Normal= a_norm;
-	gl_Position= u_worldMatrix*u_model*vec4(a_posL,1.0);
+	gl_Position= u_worldMatrix*vec4(FragPos,1.0);
 } 

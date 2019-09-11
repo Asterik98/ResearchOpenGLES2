@@ -24,8 +24,10 @@ void Renderer::UseVBO() {
 	glVertexAttribPointer(ObjectRender->m_Shader->GetAttributes().position, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
 
 	glEnableVertexAttribArray(R_Shaders->GetAttributes().uv);
-	glVertexAttribPointer(R_Shaders->GetAttributes().uv, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (char*)(6 * sizeof(float)));
-	
+	glVertexAttribPointer(R_Shaders->GetAttributes().uv, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (char*)(3 * sizeof(float)));
+
+	glEnableVertexAttribArray(R_Shaders->GetAttributes().norm);
+	glVertexAttribPointer(R_Shaders->GetAttributes().norm, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (char*)(5* sizeof(float)));
 }
 void Renderer::UseIBO() {
 

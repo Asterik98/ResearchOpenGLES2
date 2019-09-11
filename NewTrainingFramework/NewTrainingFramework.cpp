@@ -67,9 +67,10 @@ void Draw( ESContext *esContext )
 	glUseProgram(myShaders2->GetProgram());
 	myRender->Render(myObj2, myCamera);
 	myObj2->SetPos(0.5, 0.5, 0.0);
-	myObj2->SetSca(0.5, 0.5, 0.5);
+	myObj2->SetSca(1, 1, 1);
 	myObj2->SetRot(0.0, degree, 0.0);
 	myRender->SetModel(1.2,1.0,2.0);
+	myRender->SetLightPos(1.2,1.0,2.0);
 	degree += 0.01;
 	myRender->DoDraw();
 
