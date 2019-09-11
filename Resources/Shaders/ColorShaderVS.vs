@@ -1,14 +1,13 @@
-attribute vec2 a_uv; 
 attribute vec3 a_posL;
-varying vec2 v_uv;
-uniform vec3 u_pos;
-uniform vec3 u_sca;
+attribute vec3 a_norm;
+varying vec3 Normal;
+varying vec3 FragPos;
 uniform mat4 u_worldMatrix;
-uniform vec4 lightColor;
-uniform vec4 objectColor;
+uniform mat4 u_model;
+uniform vec3 lightColor;
+uniform vec3 objectColor;
 void main() {            
-	vec4 posL = vec4(a_posL, 1);
-	posL= u_worldMatrix * posL;
-	gl_Position = posL;
-	v_uv = a_uv; 
+	FragPos = vec3(u_model*vec4(a_posL,1.0));
+	Normal= a_norm;
+	gl_Position= u_worldMatrix*u_model*vec4(a_posL,1.0);
 } 

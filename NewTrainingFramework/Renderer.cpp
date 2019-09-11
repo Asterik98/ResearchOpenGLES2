@@ -39,23 +39,23 @@ void Renderer::GetTextureId() {
 	glUniformMatrix4fv(R_Shaders->GetUniforms().worldMatrix, 1, GL_FALSE, *wvp.m);
 
 }
-void Renderer::SetLightColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a) {
-	glUniform4f(R_Shaders->GetUniforms().lightColor, r, g, b, a);
+void Renderer::SetLightColor(GLfloat r, GLfloat g, GLfloat b) {
+	glUniform3f(R_Shaders->GetUniforms().lightColor, r, g, b);
 }
-void Renderer::SetObjectColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a) {
-	glUniform4f(R_Shaders->GetUniforms().objectColor, r, g, b, a);
+void Renderer::SetObjectColor(GLfloat r, GLfloat g, GLfloat b) {
+	glUniform3f(R_Shaders->GetUniforms().objectColor, r, g, b);
 }
-void Renderer::SetModel() {
-	Matrix model = Matrix(1.0);
-
-	Vector3 lightPos = Vector3(1.2, 1.0, 2.0);
-	model.SetTranslation(lightPos);
+void Renderer::SetModel(GLfloat x, GLfloat y, GLfloat z) {
+	model.SetTranslation(x,y,z);
 	model.SetScale(0.2,0.2,0.2);
-	glUniformMatrix4fv(R_Shaders->GetUniforms().model, 1, GL_FALSE, *model.m);
 }
 void Renderer::DoDraw() {
 	UseVBO();
 	GetTextureId();
 	UseIBO();
+	glUniformMatrix4fv(R_Shaders->GetUniforms().model, 1, GL_FALSE, *model.m);
 	glDrawElements(GL_TRIANGLES, R_Model->m_indicesCount, GL_UNSIGNED_INT, 0);
+}
+void Renderer::SetLightPos(GLfloat x, GLfloat y, GLfloat z) {
+	glUniform3f(R_Shaders->GetUniforms().lightPos, x,y,z);
 }

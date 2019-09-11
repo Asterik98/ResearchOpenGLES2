@@ -15,9 +15,10 @@
 
 Shaders*myShaders=new Shaders;
 Shaders*myShaders2=new Shaders;
+Shaders*myShaders3=new Shaders;
+Shaders*myShaders4=new Shaders;
 Model* myModel=new Model;
 Texture* myTexture=new Texture;
-
 Object3D* myObj;
 Object3D* myObj2;
 
@@ -34,10 +35,12 @@ int Init( ESContext *esContext )
 	glClearColor(0.3f, 0.5f, 0.3f, 0.0f );
 
 	myModel->InitModel("../Resources/Models/Cube2.nfg");
-	myShaders->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/ColorShaderFS.fs");
+	myShaders->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/AmbientShaderFS.fs");
+	myShaders3->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/DiffuseShaderFS.fs");
+	myShaders4->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/ColorShaderFS.fs");
 	myShaders2->Init("../Resources/Shaders/LampShaderVS.vs", "../Resources/Shaders/LampShaderFS.fs");
 	myCamera = new Camera(0.1, 10,2);
-	myObj = new Object3D(myModel, myShaders);
+	myObj = new Object3D(myModel, myShaders3);
 	myObj2 = new Object3D(myModel, myShaders2);
 	myRender = new Renderer;
 	myCamera->SetPos(0.0, 0.3, 0.9);
@@ -50,15 +53,15 @@ void Draw( ESContext *esContext )
 
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_DEPTH_TEST);
-	glUseProgram(myShaders->GetProgram());
+	glUseProgram(myShaders3->GetProgram());
 
 	myRender->Render(myObj,myCamera);
 	myObj->SetPos(-0.5, -0.5, 0.0);
-	myObj->SetSca(0.5, 0.5, 0.5);
+	myObj->SetSca(1, 1, 1);
 	myObj->SetRot(0.0, degree, 0.0);
 	degree+=0.01;
-	myRender->SetLightColor(1.0, 1.0, 1.0, 1.0);
-	myRender->SetObjectColor(1.0, 0.5, 0.31, 1.0);
+	myRender->SetLightColor(1.0, 1.0, 1.0);
+	myRender->SetObjectColor(1.0, 0.5, 0.31);
 	myRender->DoDraw();
 
 	glUseProgram(myShaders2->GetProgram());
@@ -66,7 +69,7 @@ void Draw( ESContext *esContext )
 	myObj2->SetPos(0.5, 0.5, 0.0);
 	myObj2->SetSca(0.5, 0.5, 0.5);
 	myObj2->SetRot(0.0, degree, 0.0);
-	myRender->SetModel();
+	myRender->SetModel(1.2,1.0,2.0);
 	degree += 0.01;
 	myRender->DoDraw();
 

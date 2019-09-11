@@ -20,6 +20,7 @@ public:
 		GLint worldMatrix;
 		GLint model;
 		GLint lightColor;
+		GLint lightPos;
 		GLint objectColor;
 	};
 
