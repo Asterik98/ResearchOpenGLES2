@@ -26,5 +26,6 @@ public:
 	void GetTextureId();
 	void SetLightColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a);
 	void SetObjectColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a);
+	void SetModel();
 };
 

@@ -16,7 +16,6 @@
 Shaders*myShaders=new Shaders;
 Shaders*myShaders2=new Shaders;
 Model* myModel=new Model;
-Model* myModel2=new Model;
 Texture* myTexture=new Texture;
 
 Object3D* myObj;
@@ -34,13 +33,12 @@ int Init( ESContext *esContext )
 {
 	glClearColor(0.3f, 0.5f, 0.3f, 0.0f );
 
-	myModel->InitModel("../Resources/Models/Cube.nfg");
+	myModel->InitModel("../Resources/Models/Cube2.nfg");
 	myShaders->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/ColorShaderFS.fs");
-	myModel2->InitModel("../Resources/Models/Cube.nfg");
 	myShaders2->Init("../Resources/Shaders/LampShaderVS.vs", "../Resources/Shaders/LampShaderFS.fs");
 	myCamera = new Camera(0.1, 10,2);
 	myObj = new Object3D(myModel, myShaders);
-	myObj2 = new Object3D(myModel2, myShaders2);
+	myObj2 = new Object3D(myModel, myShaders2);
 	myRender = new Renderer;
 	myCamera->SetPos(0.0, 0.3, 0.9);
 	myCamera->SetRot(-0.4, 0.0, 0.0);
@@ -64,14 +62,13 @@ void Draw( ESContext *esContext )
 	myRender->DoDraw();
 
 	glUseProgram(myShaders2->GetProgram());
-	myRender->Render(myObj, myCamera);
-	myObj->SetPos(0.5, 0.5, 0.0);
-	myObj->SetSca(0.1, 0.1, 0.1);
-	myObj->SetRot(0.0, degree, 0.0);
+	myRender->Render(myObj2, myCamera);
+	myObj2->SetPos(0.5, 0.5, 0.0);
+	myObj2->SetSca(0.5, 0.5, 0.5);
+	myObj2->SetRot(0.0, degree, 0.0);
+	myRender->SetModel();
 	degree += 0.01;
 	myRender->DoDraw();
-
-
 
 
 	eglSwapBuffers( esContext->eglDisplay, esContext->eglSurface );

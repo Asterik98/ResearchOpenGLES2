@@ -45,6 +45,14 @@ void Renderer::SetLightColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a) {
 void Renderer::SetObjectColor(GLfloat r, GLfloat g, GLfloat b, GLfloat a) {
 	glUniform4f(R_Shaders->GetUniforms().objectColor, r, g, b, a);
 }
+void Renderer::SetModel() {
+	Matrix model = Matrix(1.0);
+
+	Vector3 lightPos = Vector3(1.2, 1.0, 2.0);
+	model.SetTranslation(lightPos);
+	model.SetScale(0.2,0.2,0.2);
+	glUniformMatrix4fv(R_Shaders->GetUniforms().model, 1, GL_FALSE, *model.m);
+}
 void Renderer::DoDraw() {
 	UseVBO();
 	GetTextureId();

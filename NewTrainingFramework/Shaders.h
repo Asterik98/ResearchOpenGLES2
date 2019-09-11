@@ -8,6 +8,7 @@ public:
 	{
 		GLint position;
 		GLint color;
+		GLint norm;
 		GLint uv;
 	};
 
@@ -17,6 +18,7 @@ public:
 		GLint NewScale;
 		GLint iTextureLoc;
 		GLint worldMatrix;
+		GLint model;
 		GLint lightColor;
 		GLint objectColor;
 	};

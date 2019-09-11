@@ -1,29 +1,23 @@
 precision mediump float;        // Set the default precision to medium. We don't need as high of a
-                                // precision in the fragment shader.
-uniform vec3 u_LightPos;        // The position of the light in eye space.
-uniform sampler2D u_Texture;    // The input texture.
- 
-varying vec3 v_pos;        // Interpolated position for this fragment.
-varying vec4 a_FColor;           // This is the color from the vertex shader interpolated across the
-                                // triangle per fragment.
-varying vec3 v_Normal;          // Interpolated normal for this fragment.
-varying vec2 v_uv;   // Interpolated texture coordinate per fragment.
- 
+in vec3 a_norm;  
+in vec3 FragPos;  
+  
+uniform vec3 lightPos; 
+uniform vec3 lightColor;
+uniform vec3 objectColor;
+
 void main()
 {
-
-    float distance = length(u_LightPos - v_pos);
- 
-    vec3 lightVector = normalize(u_LightPos - v_pos);
-
-    float diffuse = max(dot(v_Normal, lightVector), 0.0);
- 
-    // Add attenuation.
-    diffuse = diffuse * (1.0 / (1.0 + (0.10 * distance)));
- 
-    // Add ambient lighting
-    diffuse = diffuse + 0.3;
- 
-    // Multiply the color by the diffuse illumination level and texture value to get final output color.
-    gl_FragColor = (a_FColor * diffuse * texture2D(u_Texture, v_uv));
-  }
+    // ambient
+    float ambientStrength = 0.1;
+    vec3 ambient = ambientStrength * lightColor;
+  	
+    // diffuse 
+    vec3 norm = normalize(a_norm);
+    vec3 lightDir = normalize(lightPos - FragPos);
+    float diff = max(dot(norm, lightDir), 0.0);
+    vec3 diffuse = diff * lightColor;
+            
+    vec3 result = (ambient + diffuse) * objectColor;
+    gl_FragColor = vec4(result, 1.0);
+} 
