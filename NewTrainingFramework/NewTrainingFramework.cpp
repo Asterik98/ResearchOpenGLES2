@@ -22,7 +22,7 @@ Texture* myTexture=new Texture;
 Object3D* myObj;
 Object3D* myObj2;
 
-Renderer * myRender;
+Renderer* myRender;
 Camera* myCamera;
 float degree=0.0f;
 float degree2 = 0.0f;
@@ -37,10 +37,10 @@ int Init( ESContext *esContext )
 	myModel->InitModel("../Resources/Models/Cube2.nfg");
 	myShaders->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/AmbientShaderFS.fs");
 	myShaders3->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/DiffuseShaderFS.fs");
-	myShaders4->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/ColorShaderFS.fs");
+	myShaders4->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/SpecularShaderFS.fs");
 	myShaders2->Init("../Resources/Shaders/LampShaderVS.vs", "../Resources/Shaders/LampShaderFS.fs");
 	myCamera = new Camera(0.1, 10,2);
-	myObj = new Object3D(myModel, myShaders3);
+	myObj = new Object3D(myModel, myShaders4);
 	myObj2 = new Object3D(myModel, myShaders2);
 	myRender = new Renderer;
 	myCamera->SetPos(0.0, 0.3, 0.9);
@@ -53,10 +53,10 @@ void Draw( ESContext *esContext )
 
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_DEPTH_TEST);
-	glUseProgram(myShaders3->GetProgram());
+	glUseProgram(myObj->getShader()->GetProgram());
 
 	myRender->Render(myObj,myCamera);
-	myObj->SetPos(-0.5, -0.5, 0.0);
+	myObj->SetPos(0, 0, 0.0);
 	myObj->SetSca(1, 1, 1);
 	myObj->SetRot(0.0, degree, 0.0);
 	degree+=0.01;
@@ -119,6 +119,16 @@ void Update( ESContext *esContext, float deltaTime )
 		if (TheKey == 'Z') {
 			myCamera->m_Ptransform->RotZMin(deltaTime);
 		}
+		if (TheKey == '1') {
+			myObj->m_pShader(myShaders);
+		}
+		if (TheKey == '2') {
+			myObj->m_pShader(myShaders3);
+		}
+		if (TheKey == '3') {
+			myObj->m_pShader(myShaders4);
+		}
+
 	}
 	Vector4 newPos = myCamera->m_Ptransform->Position + mov;
 	newPos = Vector4(mov, 1)* myCamera->m_Ptransform->GetWorldMatrix();

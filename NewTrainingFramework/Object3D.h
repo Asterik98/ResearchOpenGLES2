@@ -77,6 +77,7 @@ public:
 	void m_pShader(Shaders* myShader);
 	void m_pModel(Model* myModel);
 	void m_Transform(Transform * _Transform);
+	Shaders* getShader();
 	void SetPos(float x, float y, float z);
 	void SetRot(float x, float y, float z);
 	void SetSca(float x, float y, float z);

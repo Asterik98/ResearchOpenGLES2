@@ -21,6 +21,7 @@ public:
 		GLint model;
 		GLint lightColor;
 		GLint lightPos;
+		GLint viewPos;
 		GLint objectColor;
 	};
 

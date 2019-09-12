@@ -51,6 +51,9 @@ void Object3D::SetSca(float x, float y, float z)
 {
 	m_Ptransform->ChangeSca(x, y, z);
 }
+Shaders* Object3D::getShader() {
+	return m_Shader;
+}
 
 
 

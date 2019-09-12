@@ -57,6 +57,7 @@ void Renderer::DoDraw() {
 	UseIBO();
 	glUniformMatrix4fv(R_Shaders->GetUniforms().model, 1, GL_FALSE, *model.m);
 	glDrawElements(GL_TRIANGLES, R_Model->m_indicesCount, GL_UNSIGNED_INT, 0);
+	glUniformMatrix4fv(R_Shaders->GetUniforms().viewPos, 1, GL_FALSE, *CameraRender->GetViewMatrix().m);
 }
 void Renderer::SetLightPos(GLfloat x, GLfloat y, GLfloat z) {
 	glUniform3f(R_Shaders->GetUniforms().lightPos, x,y,z);
