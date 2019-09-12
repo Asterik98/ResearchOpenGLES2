@@ -17,6 +17,7 @@ public:
 	Texture *R_Texture;
 	Object3D * ObjectRender;
 	Camera * CameraRender;
+	Matrix model = Matrix(1.0);
 	Renderer();
 	~Renderer();
 	void Render(Object3D* myObject,Camera* myCamera);
@@ -24,6 +25,9 @@ public:
 	void UseIBO();
 	void DoDraw();
 	void GetTextureId();
-
+	void SetLightColor(GLfloat r, GLfloat g, GLfloat b);
+	void SetObjectColor(GLfloat r, GLfloat g, GLfloat b);
+	void SetModel(GLfloat x, GLfloat y, GLfloat z);
+	void SetLightPos(GLfloat x, GLfloat y, GLfloat z);
 };
 

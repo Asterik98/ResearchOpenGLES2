@@ -119,12 +119,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.doc" />
+    <None Include="..\Resources\Shaders\AmbientShaderFS.fs" />
+    <None Include="..\Resources\Shaders\DiffuseShaderFS.fs" />
+    <None Include="..\Resources\Shaders\LampShaderFS.fs" />
+    <None Include="..\Resources\Shaders\LampShaderVS.vs" />
+    <None Include="..\Resources\Shaders\ColorShaderFS.fs" />
     <None Include="..\Resources\Shaders\LightShaderFS.fs" />
+    <None Include="..\Resources\Shaders\ColorShaderVS.vs" />
     <None Include="..\Resources\Shaders\LightShaderVS.vs" />
-    <None Include="..\Resources\Shaders\TextureShaderFS.fs" />
-    <None Include="..\Resources\Shaders\TextureShaderFS3.fs" />
-    <None Include="..\Resources\Shaders\TextureShaderVS.vs" />
-    <None Include="..\Resources\Shaders\TextureShaderVS3.vs" />
+    <None Include="..\Resources\Shaders\SpecularShaderFS.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Utilities\Utilities.vcxproj">

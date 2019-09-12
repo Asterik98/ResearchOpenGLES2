@@ -13,6 +13,8 @@ void main() {
 	vec4 posL = vec4(a_posL, 1);
 	posL= u_worldMatrix * posL;
 	gl_Position = posL;
+	v_pos=vec3(posL);
+	v_Normal = vec3(u_worldMatrix * vec4(a_Normal, 0.0));
 	a_FColor=a_VColor;
 	v_uv = a_uv; 
 } 

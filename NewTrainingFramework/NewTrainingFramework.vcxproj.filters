@@ -80,22 +80,31 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Readme.doc" />
+    <None Include="..\Resources\Shaders\ColorShaderFS.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\ColorShaderVS.vs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\LampShaderFS.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="..\Resources\Shaders\LampShaderVS.vs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
     <None Include="..\Resources\Shaders\LightShaderFS.fs">
       <Filter>Resources\Shaders</Filter>
     </None>
     <None Include="..\Resources\Shaders\LightShaderVS.vs">
       <Filter>Resources\Shaders</Filter>
     </None>
-    <None Include="..\Resources\Shaders\TextureShaderFS.fs">
+    <None Include="..\Resources\Shaders\AmbientShaderFS.fs">
       <Filter>Resources\Shaders</Filter>
     </None>
-    <None Include="..\Resources\Shaders\TextureShaderFS3.fs">
+    <None Include="..\Resources\Shaders\DiffuseShaderFS.fs">
       <Filter>Resources\Shaders</Filter>
     </None>
-    <None Include="..\Resources\Shaders\TextureShaderVS.vs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="..\Resources\Shaders\TextureShaderVS3.vs">
+    <None Include="..\Resources\Shaders\SpecularShaderFS.fs">
       <Filter>Resources\Shaders</Filter>
     </None>
   </ItemGroup>

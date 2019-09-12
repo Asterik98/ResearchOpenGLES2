@@ -10,7 +10,7 @@ struct Transform {
 	Vector3  Rotation;
 	Vector3  Scale;
 	Transform() {
-		Position = Vector3(0.0, 0.0, 0.0);
+		Position = Vector3(1.0, 1.0, 1.0);
 		Rotation = Vector3(0.0, 0.0, 0.0);
 		Scale = Vector3(1.0, 1.0, 1.0);
 	}
@@ -69,16 +69,15 @@ class Object3D
 public:
 	Shaders* m_Shader;
 	Model* m_Model;
-	Texture* m_Texture;
 	Transform *m_Ptransform;
 public:
 	Object3D();
 	~Object3D();
-	Object3D(Model * myModel, Shaders * myShader, Texture * myTexture);
+	Object3D(Model * myModel, Shaders * myShader);
 	void m_pShader(Shaders* myShader);
 	void m_pModel(Model* myModel);
-	void m_pTexture(Texture* myTexture);
 	void m_Transform(Transform * _Transform);
+	Shaders* getShader();
 	void SetPos(float x, float y, float z);
 	void SetRot(float x, float y, float z);
 	void SetSca(float x, float y, float z);
