@@ -70,7 +70,7 @@ void Draw( ESContext *esContext )
 	myObj2->SetPos(0.5, 0.5, 0.0);
 	myObj2->SetSca(0.2, 0.2, 0.2);
 	myObj2->SetRot(0.0, degree2, 0.0);
-	degree2 += 0.01;
+	degree2 -= 0.0;
 	myRender->SetLightPos(1.2f,1.0f,2.0f);
 	myRender->SetModel(1.2f, 1.0f, 2.0f);
 	myRender->DoDraw();
