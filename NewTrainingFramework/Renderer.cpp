@@ -21,7 +21,7 @@ void Renderer::Render(Object3D * myObject, Camera * myCamera)
 void Renderer::UseVBO() {
 	glBindBuffer(GL_ARRAY_BUFFER, ObjectRender->m_Model->m_vboId);
 	glEnableVertexAttribArray(ObjectRender->m_Shader->GetAttributes().position);
-	glVertexAttribPointer(ObjectRender->m_Shader->GetAttributes().position, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), 0);
+	glVertexAttribPointer(ObjectRender->m_Shader->GetAttributes().position, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (char*)0);
 
 	glEnableVertexAttribArray(R_Shaders->GetAttributes().uv);
 	glVertexAttribPointer(R_Shaders->GetAttributes().uv, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (char*)(3 * sizeof(float)));
@@ -49,16 +49,22 @@ void Renderer::SetObjectColor(GLfloat r, GLfloat g, GLfloat b) {
 }
 void Renderer::SetModel(GLfloat x, GLfloat y, GLfloat z) {
 	model.SetTranslation(x,y,z);
-	model.SetScale(0.2,0.2,0.2);
+	model.SetScale(0.2f,0.2f,0.2f);
 }
 void Renderer::DoDraw() {
 	UseVBO();
 	GetTextureId();
 	UseIBO();
 	glUniformMatrix4fv(R_Shaders->GetUniforms().model, 1, GL_FALSE, *model.m);
+	glUniform3f(R_Shaders->GetUniforms().viewPos, CameraRender->m_Ptransform->Position.x*(-1), CameraRender->m_Ptransform->Position.y*(-1), CameraRender->m_Ptransform->Position.z*(-1));
 	glDrawElements(GL_TRIANGLES, R_Model->m_indicesCount, GL_UNSIGNED_INT, 0);
-	glUniformMatrix4fv(R_Shaders->GetUniforms().viewPos, 1, GL_FALSE, *CameraRender->GetViewMatrix().m);
 }
 void Renderer::SetLightPos(GLfloat x, GLfloat y, GLfloat z) {
 	glUniform3f(R_Shaders->GetUniforms().lightPos, x,y,z);
+}void Renderer::InitInverseModel(GLfloat x, GLfloat y, GLfloat z) {
+	invModel.SetTranslation((-1)*x, (-1)*y, (-1)*z);
+	invModel.Transpose();
+	glUniformMatrix4fv(R_Shaders->GetUniforms().invModel, 1, GL_FALSE, *invModel.m);
 }
+
+

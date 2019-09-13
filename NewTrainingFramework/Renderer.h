@@ -18,6 +18,7 @@ public:
 	Object3D * ObjectRender;
 	Camera * CameraRender;
 	Matrix model = Matrix(1.0);
+	Matrix invModel = Matrix(1.0);
 	Renderer();
 	~Renderer();
 	void Render(Object3D* myObject,Camera* myCamera);
@@ -29,5 +30,6 @@ public:
 	void SetObjectColor(GLfloat r, GLfloat g, GLfloat b);
 	void SetModel(GLfloat x, GLfloat y, GLfloat z);
 	void SetLightPos(GLfloat x, GLfloat y, GLfloat z);
+	void InitInverseModel(GLfloat x, GLfloat y, GLfloat z);
 };
 

@@ -19,6 +19,7 @@ public:
 		GLint iTextureLoc;
 		GLint worldMatrix;
 		GLint model;
+		GLint invModel;
 		GLint lightColor;
 		GLint lightPos;
 		GLint viewPos;

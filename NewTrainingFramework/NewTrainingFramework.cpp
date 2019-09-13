@@ -24,10 +24,8 @@ Object3D* myObj2;
 
 Renderer* myRender;
 Camera* myCamera;
-float degree=0.0f;
-float degree2 = 0.0f;
-float degree3 = 0.0f;
-float degree4 = 0.0f;
+float degree = 0.0;
+float degree2 = 0.0;
 bool isPressed=false;
 unsigned char TheKey;
 int Init( ESContext *esContext )
@@ -40,7 +38,7 @@ int Init( ESContext *esContext )
 	myShaders4->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/SpecularShaderFS.fs");
 	myShaders2->Init("../Resources/Shaders/LampShaderVS.vs", "../Resources/Shaders/LampShaderFS.fs");
 	myCamera = new Camera(0.1, 10,2);
-	myObj = new Object3D(myModel, myShaders4);
+	myObj = new Object3D(myModel, myShaders);
 	myObj2 = new Object3D(myModel, myShaders2);
 	myRender = new Renderer;
 	myCamera->SetPos(0.0, 0.3, 0.9);
@@ -59,19 +57,22 @@ void Draw( ESContext *esContext )
 	myObj->SetPos(0, 0, 0.0);
 	myObj->SetSca(1, 1, 1);
 	myObj->SetRot(0.0, degree, 0.0);
-	degree+=0.01;
+	degree += 0.01;
 	myRender->SetLightColor(1.0, 1.0, 1.0);
 	myRender->SetObjectColor(1.0, 0.5, 0.31);
+	myRender->InitInverseModel(1.2f, 1.0f, 2.0f);
+	myRender->SetModel(1.2f, 1.0f, 2.0f);
+	myRender->SetLightPos(1.2f, 1.0f, 2.0f);
 	myRender->DoDraw();
 
 	glUseProgram(myShaders2->GetProgram());
 	myRender->Render(myObj2, myCamera);
 	myObj2->SetPos(0.5, 0.5, 0.0);
-	myObj2->SetSca(1, 1, 1);
-	myObj2->SetRot(0.0, degree, 0.0);
-	myRender->SetModel(1.2,1.0,2.0);
-	myRender->SetLightPos(1.2,1.0,2.0);
-	degree += 0.01;
+	myObj2->SetSca(0.2, 0.2, 0.2);
+	myObj2->SetRot(0.0, degree2, 0.0);
+	degree2 += 0.01;
+	myRender->SetLightPos(1.2f,1.0f,2.0f);
+	myRender->SetModel(1.2f, 1.0f, 2.0f);
 	myRender->DoDraw();
 
 
