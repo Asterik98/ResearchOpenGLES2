@@ -107,5 +107,8 @@
     <None Include="..\Resources\Shaders\SpecularShaderFS.fs">
       <Filter>Resources\Shaders</Filter>
     </None>
+    <None Include="..\Resources\Shaders\PhongShaderFS.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

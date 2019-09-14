@@ -39,6 +39,7 @@ void Renderer::GetTextureId() {
 	//glUniformMatrix4fv(R_Shaders->GetUniforms().worldMatrix, 1, GL_FALSE, *ObjectRender->m_Ptransform->GetWorldMatrix().m);
 	wvp = (ObjectRender->m_Ptransform->GetWorldMatrix()) * CameraRender->GetViewMatrix() * CameraRender->GetProjectionMatrix();
 	glUniformMatrix4fv(R_Shaders->GetUniforms().worldMatrix, 1, GL_FALSE, *wvp.m);
+	glUniformMatrix4fv(R_Shaders->GetUniforms().view, 1, GL_FALSE, *CameraRender->GetViewMatrix().m);
 
 }
 void Renderer::SetLightColor(GLfloat r, GLfloat g, GLfloat b) {
@@ -63,8 +64,7 @@ void Renderer::SetLightPos(GLfloat x, GLfloat y, GLfloat z) {
 	glUniform3f(R_Shaders->GetUniforms().lightPos, x,y,z);
 }void Renderer::InitInverseModel(GLfloat x, GLfloat y, GLfloat z) {
 	invModel.SetTranslation((-1)*x, (-1)*y, (-1)*z);
-	invModel.Transpose();
-	glUniformMatrix4fv(R_Shaders->GetUniforms().invModel, 1, GL_FALSE, *invModel.m);
+	glUniformMatrix4fv(R_Shaders->GetUniforms().invModel, 1, GL_FALSE, *invModel.Transpose().m);
 }
 
 

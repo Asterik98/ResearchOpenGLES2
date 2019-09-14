@@ -17,6 +17,7 @@ Shaders*myShaders=new Shaders;
 Shaders*myShaders2=new Shaders;
 Shaders*myShaders3=new Shaders;
 Shaders*myShaders4=new Shaders;
+Shaders*myShaders5=new Shaders;
 Model* myModel=new Model;
 Texture* myTexture=new Texture;
 Object3D* myObj;
@@ -36,6 +37,7 @@ int Init( ESContext *esContext )
 	myShaders->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/AmbientShaderFS.fs");
 	myShaders3->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/DiffuseShaderFS.fs");
 	myShaders4->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/SpecularShaderFS.fs");
+	myShaders5->Init("../Resources/Shaders/ColorShaderVS.vs", "../Resources/Shaders/PhongShaderFS.fs");
 	myShaders2->Init("../Resources/Shaders/LampShaderVS.vs", "../Resources/Shaders/LampShaderFS.fs");
 	myCamera = new Camera(0.1, 10,2);
 	myObj = new Object3D(myModel, myShaders);
@@ -51,28 +53,29 @@ void Draw( ESContext *esContext )
 
 	glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_DEPTH_TEST);
+
+	glUseProgram(myShaders2->GetProgram());
+	myRender->Render(myObj2, myCamera);
+	myObj2->SetPos(0.5, 0.5, 0.5);
+	myObj2->SetSca(0.2, 0.2, 0.2);
+	myObj2->SetRot(0.0,0.0, 0.0);
+	//degree2 -= 0.01;
+	myRender->SetLightPos(1.2f, 1.0f, 2.0f);
+	myRender->SetModel(1.2f, 1.0f, 2.0f);
+	myRender->DoDraw();
+
 	glUseProgram(myObj->getShader()->GetProgram());
 
 	myRender->Render(myObj,myCamera);
 	myObj->SetPos(0, 0, 0.0);
 	myObj->SetSca(1, 1, 1);
 	myObj->SetRot(0.0, degree, 0.0);
-	degree += 0.01;
+	degree += 0.00;
 	myRender->SetLightColor(1.0, 1.0, 1.0);
 	myRender->SetObjectColor(1.0, 0.5, 0.31);
 	myRender->InitInverseModel(1.2f, 1.0f, 2.0f);
 	myRender->SetModel(1.2f, 1.0f, 2.0f);
 	myRender->SetLightPos(1.2f, 1.0f, 2.0f);
-	myRender->DoDraw();
-
-	glUseProgram(myShaders2->GetProgram());
-	myRender->Render(myObj2, myCamera);
-	myObj2->SetPos(0.5, 0.5, 0.0);
-	myObj2->SetSca(0.2, 0.2, 0.2);
-	myObj2->SetRot(0.0, degree2, 0.0);
-	degree2 -= 0.0;
-	myRender->SetLightPos(1.2f,1.0f,2.0f);
-	myRender->SetModel(1.2f, 1.0f, 2.0f);
 	myRender->DoDraw();
 
 
@@ -128,6 +131,9 @@ void Update( ESContext *esContext, float deltaTime )
 		}
 		if (TheKey == '3') {
 			myObj->m_pShader(myShaders4);
+		}
+		if (TheKey == '4') {
+			myObj->m_pShader(myShaders5);
 		}
 
 	}

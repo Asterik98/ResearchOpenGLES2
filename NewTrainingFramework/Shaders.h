@@ -23,6 +23,7 @@ public:
 		GLint lightColor;
 		GLint lightPos;
 		GLint viewPos;
+		GLint view;
 		GLint objectColor;
 	};
 

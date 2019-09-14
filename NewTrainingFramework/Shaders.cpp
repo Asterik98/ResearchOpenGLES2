@@ -28,6 +28,7 @@ int Shaders::Init( char * fileVertexShader, char * fileFragmentShader )
 	//m_uniforms.NewPos=glGetUniformLocation(m_program,"u_pos");
 	//m_uniforms.NewScale = glGetUniformLocation(m_program, "u_sca");
 	m_uniforms.worldMatrix= glGetUniformLocation(m_program, "u_worldMatrix");
+	m_uniforms.view= glGetUniformLocation(m_program, "view");
 	m_uniforms.model= glGetUniformLocation(m_program, "u_model");
 	m_uniforms.invModel= glGetUniformLocation(m_program, "u_invModel");
 	m_uniforms.lightColor= glGetUniformLocation(m_program, "lightColor");

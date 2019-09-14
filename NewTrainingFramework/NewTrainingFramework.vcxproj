@@ -127,6 +127,7 @@
     <None Include="..\Resources\Shaders\LightShaderFS.fs" />
     <None Include="..\Resources\Shaders\ColorShaderVS.vs" />
     <None Include="..\Resources\Shaders\LightShaderVS.vs" />
+    <None Include="..\Resources\Shaders\PhongShaderFS.fs" />
     <None Include="..\Resources\Shaders\SpecularShaderFS.fs" />
   </ItemGroup>
   <ItemGroup>
