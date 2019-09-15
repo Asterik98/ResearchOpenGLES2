@@ -64,7 +64,7 @@ void Renderer::SetLightPos(GLfloat x, GLfloat y, GLfloat z) {
 	glUniform3f(R_Shaders->GetUniforms().lightPos, x,y,z);
 }void Renderer::InitInverseModel(GLfloat x, GLfloat y, GLfloat z) {
 	invModel.SetTranslation((-1)*x, (-1)*y, (-1)*z);
-	glUniformMatrix4fv(R_Shaders->GetUniforms().invModel, 1, GL_FALSE, *invModel.Transpose().m);
+	glUniformMatrix3fv(R_Shaders->GetUniforms().invModel, 1, GL_FALSE, *invModel.Transpose().m);
 }
 
 
